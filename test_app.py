@@ -16,10 +16,10 @@ class TestApp(TestCase):
         self.assertIn(b"Enter Your Name and Age", response.data)
 
     def test_greet_page(self):
-        response = self.client.post(url_for('greet'), data={'name': 'John', 'age': 25}, follow_redirects=True)
+        response = self.client.post(url_for('greet'), data={'name': 'John', 'age': 25, 'address': 'Apeldoorn'}, follow_redirects=True)
         self.assert200(response)
         self.assertIn(b"Hello, John!", response.data)
-        self.assertIn(b"You are 25 years old.", response.data)
+        self.assertIn(b"You are 25 years old, from Apeldoorn", response.data)
 
 if __name__ == '__main__':
     unittest.main()
